@@ -1,0 +1,10 @@
+﻿################################################################################
+# This .gitignore file was automatically created by Microsoft(R) Visual Studio.
+################################################################################
+
+/ProjectEuler/Runner/obj
+/ProjectEuler/Runner/bin/Debug/net7.0
+/ProjectEuler/Snippets/obj
+/ProjectEuler/Snippets/bin/Debug/net7.0
+/ProjectEuler/.vs
+/.vs

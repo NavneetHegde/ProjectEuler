@@ -2,8 +2,6 @@
 
 using Snippets;
 
-//Level1.Problems1();
-Level1.Problems3();
-
+Level1.Problems5();
 
 Console.ReadLine();

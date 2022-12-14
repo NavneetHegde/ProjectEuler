@@ -164,4 +164,28 @@ public static class Level1
         Console.WriteLine(smallestNumber);
         Console.WriteLine($"Execution Time: {watch.Elapsed.TotalMilliseconds} ms");
     }
+
+    /// <summary>
+    /// The difference between the sum of the squares of the first one hundred natural numbers and the square of the sum.
+    /// </summary>
+    /// <param name="input"></param>
+    /// <remarks>O(n)</remarks>
+    public static void Problems6(int input = 100)
+    {
+        var watch = Stopwatch.StartNew();
+        //1. sum of squares ofr natural numbers
+        int i = 1;
+        long sum = 0;
+        long squares = 0;
+        while (i <= input)
+        {
+            sum += i;
+            squares += (i * i);
+            i++;
+        }
+
+        watch.Stop();
+        Console.WriteLine((sum * sum) - squares);
+        Console.WriteLine($"Execution Time: {watch.Elapsed.TotalMilliseconds} ms");
+    }
 }

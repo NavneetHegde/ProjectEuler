@@ -188,4 +188,69 @@ public static class Level1
         Console.WriteLine((sum * sum) - squares);
         Console.WriteLine($"Execution Time: {watch.Elapsed.TotalMilliseconds} ms");
     }
+
+    /// <summary>
+    /// The 10001 st prime number
+    /// </summary>
+    /// <param name="input"></param>
+    /// <remarks>O(n+sqrt(m))</remarks>
+    public static void Problems7(int primeNumberCount = 10001)
+    {
+        var watch = Stopwatch.StartNew();
+
+        //1. sum of squares ofr natural numbers
+        int primeNumber = 3;
+        if (primeNumberCount == 1)
+            primeNumber = 2;
+        else if (primeNumberCount == 2)
+            primeNumber = 3;
+        else
+        {
+            long _primeNumberCount = 2;
+            while (_primeNumberCount < primeNumberCount)
+            {
+                primeNumber += 2;
+                if (IsPrime(primeNumber))
+                {
+                    _primeNumberCount++;
+                }
+            }
+        }
+
+        watch.Stop();
+        Console.WriteLine($"{primeNumberCount}th prime is {primeNumber}");
+        Console.WriteLine($"Execution Time: {watch.Elapsed.TotalMilliseconds} ms");
+    }
+
+    /// <summary>
+    /// Basic prime number check
+    /// </summary>
+    /// <param name="primeNumber"></param>
+    /// <returns>bool</returns>
+    private static bool IsPrime(long primeNumber)
+    {
+        // base case
+        if (primeNumber == 1)
+            return false;
+
+        // base cases
+        if (primeNumber == 2 || primeNumber == 3)
+            return true;
+
+        // base case
+        if (primeNumber % 2 == 0 || primeNumber % 3 == 0)
+            return false;
+
+        long number = 3;
+        while (number <= Math.Sqrt(primeNumber))
+        {
+            if (primeNumber % number == 0)
+                return false;
+
+            number += 2;
+        }
+
+        // didn't found any odd divisor other than itself
+        return true;
+    }
 }

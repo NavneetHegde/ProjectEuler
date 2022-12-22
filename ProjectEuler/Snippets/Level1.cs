@@ -1,4 +1,5 @@
-﻿using System.Diagnostics;
+﻿using System;
+using System.Diagnostics;
 
 namespace Snippets;
 
@@ -247,6 +248,66 @@ public static class Level1
 
         watch.Stop();
         Console.WriteLine($"Max {totalAdjacentDigits} digit product is {maxDigit}");
+        Console.WriteLine($"Execution Time: {watch.Elapsed.TotalMilliseconds} ms");
+    }
+
+    /// <summary>
+    /// TODO : Need better approach
+    /// There exists exactly one Pythagorean triplet for which a + b + c = 1000.
+    /// Find the product abc.
+    /// </summary>
+    /// <param name="input"></param>
+    /// <remarks>O(n*n*n)</remarks>
+    public static void Problems9()
+    {
+        var watch = Stopwatch.StartNew();
+        int x = 5;
+        int y = 4;
+        int z = 3;
+        for (int c = 100000; c > 5; c--)
+        {
+            for (int b = c - 1; b > 0; b--)
+            {
+                if (b + c > 1000)
+                    continue;
+                for (int a = b - 1; a > 0; a--)
+                {
+                    if (a + b + c != 1000)
+                        continue;
+                    int value = (a * a) + (b * b);
+                    if (c * c == value)
+                    {
+                        x = c; y = b; z = a;
+                        break;
+                    }
+                }
+            }
+        }
+
+        watch.Stop();
+        Console.WriteLine($"Triplets are {x} {y} {z} \n Sum is {x + y + z} \n and product is {x * y * z}");
+        Console.WriteLine($"Execution Time: {watch.Elapsed.TotalMilliseconds} ms");
+    }
+
+    /// <summary>
+    /// Find the sum of all the primes below n.
+    /// </summary>
+    /// <param name="input"></param>
+    /// <remarks>O(n*n*n)</remarks>
+    public static void Problems10(int number = 2000000)
+    {
+        var watch = Stopwatch.StartNew();
+
+        //1. find all primes until the number
+        long primeSum = 2 + 3 + 5;
+        for (int i = 7; i < number; i += 2)
+        {
+            if (IsPrime(i))
+                primeSum += i;
+        }
+
+        watch.Stop();
+        Console.WriteLine($"Prime sum under {number} = {primeSum}");
         Console.WriteLine($"Execution Time: {watch.Elapsed.TotalMilliseconds} ms");
     }
 
